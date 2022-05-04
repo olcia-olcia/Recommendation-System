@@ -134,3 +134,4 @@ data/metadata/*.json
 data/metadata/*.gz
 
 *.csv
+.vscode

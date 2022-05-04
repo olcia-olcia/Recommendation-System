@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 import pandas as pd
+import os
+from typing import List
+
+
+def get_files_from_directory(path: str, extension: str) -> List[str]:
+
+    files_list = os.listdir(path)
+    files_list = [os.path.join(path, f) for f in files_list if extension in f]
+    files_list.sort()
+
+    return(files_list)
 
 
 def join_ratings_with_metadata(rating_path: str,
