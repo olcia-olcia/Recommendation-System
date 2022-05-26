@@ -38,3 +38,25 @@ def join_ratings_with_metadata(rating_path: str,
                                 how='inner')
 
     return joined_data
+
+
+def calculate_statistics(df: pd.DataFrame) -> pd.Series:
+    """
+    function calculates statistics for provided dataframe including:
+    - Number of users
+    - Number of items
+    - Total number of ratings
+    - Average number of reviews per user
+    - Size of the rating matrix (number of users x number of items)
+    - Sparsity of the dataset
+        (what percentage of the rating matrix has no records)
+    """
+
+    numbers = df.agg({"itemID": 'nunique',
+                      "userID": 'nunique',
+                      'rating': 'count'})
+    numbers['avg_number_reviews'] = numbers['rating'] / numbers['userID']
+    numbers['rating_mx_shape'] = numbers['userID'] * numbers['itemID']
+    numbers['sparsity'] = 1 - (numbers['rating'] / numbers['rating_mx_shape'])
+
+    return numbers
