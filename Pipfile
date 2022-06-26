@@ -7,8 +7,6 @@ name = "pypi"
 pandas = "*"
 
 [dev-packages]
-ipykernel = "*"
-flake8 = "*"
 
 [requires]
 python_version = "3.9"
