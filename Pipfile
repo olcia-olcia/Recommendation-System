@@ -5,8 +5,10 @@ name = "pypi"
 
 [packages]
 pandas = "*"
+notebook = "*"
 
 [dev-packages]
+notebook = "*"
 
 [requires]
 python_version = "3.9"
